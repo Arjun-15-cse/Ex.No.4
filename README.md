@@ -1,4 +1,4 @@
-# Ex.No.4 – Advanced Prompt Patterns for AI-Powered Manufacturing
+# Ex.No.4 – Evaluation of Advanced Prompt Engineering Patterns
 
 ### DATE:
 08-08-2026
@@ -10,46 +10,29 @@
 
 # AIM
 
-To design and evaluate prompts using different advanced prompt engineering patterns such as Zero-shot Prompting, Few-shot Prompting, Chain-of-Thought, Persona Pattern, Reverse Prompting, Graph Prompting, and Active Prompting, and compare their effectiveness using a rubric-based evaluation method.
+To implement and evaluate different prompt engineering patterns — Zero-shot Prompting, Few-shot Prompting, Chain-of-Thought, Persona Pattern, Reverse Prompting, Graph Prompting, and Active Prompting — using an engineering case study and compare their performance based on reasoning, correctness, and token usage.
 
 ---
 
-# USE CASE
+# CASE STUDY
 
-## AI-Powered Smart Manufacturing and Predictive Maintenance
+## Smart Irrigation System
 
-The manufacturing industry wants to reduce manual monitoring and improve production efficiency using IoT devices and embedded controllers.
+A smart irrigation system uses IoT sensors and AI to monitor soil and environmental conditions and automatically control water supply to crops.
 
-The proposed system monitors:
+The system collects:
 
-- Machine temperature
-- Vibration
-- Energy consumption
-- Production rate
-- Machine operating hours
-- Equipment status
+- Soil moisture
+- Temperature
+- Humidity
+- Rainfall
+- Water availability
 
-The system uses sensor data to identify abnormal machine behavior and predict possible equipment failures.
+The AI system analyzes the sensor data and determines whether irrigation is required.
 
-## Main Objectives
+### Objective
 
-- Improve production efficiency by **30%**.
-- Minimize machinery downtime using predictive maintenance.
-- Enable real-time monitoring and remote control.
-- Reduce energy consumption through process optimization.
-- Detect machine faults at an early stage.
-
----
-
-# PROCEDURE
-
-1. Define the manufacturing use case.
-2. Select the AI task for prompt generation.
-3. Apply different prompt engineering patterns.
-4. Generate responses using AI tools.
-5. Compare the generated outputs.
-6. Evaluate the outputs using a rubric.
-7. Identify the most effective prompting technique.
+The main goal is to provide the required amount of water to crops while reducing water wastage and improving irrigation efficiency.
 
 ---
 
@@ -57,23 +40,25 @@ The system uses sensor data to identify abnormal machine behavior and predict po
 
 ## Definition
 
-Zero-shot prompting provides the AI with a direct instruction without giving examples.
+Zero-shot prompting gives the AI a direct instruction without providing examples.
 
-## Prompt
+### Prompt
 
-> Explain how an IoT-based predictive maintenance system can monitor manufacturing machines, detect possible failures, and reduce machine downtime. Explain it in simple terms with a practical example.
+> Analyze the following smart irrigation sensor data and determine whether irrigation is required: Soil moisture = 25%, Temperature = 34°C, Humidity = 45%, Rainfall = 0 mm. Give the recommended action and explain why.
 
-## Expected Output
+### Expected Output
 
-The AI should explain how sensors collect machine data, how abnormal conditions are detected, and how maintenance can be scheduled before a machine fails.
+> Irrigation is required because the soil moisture is low and there is no rainfall. The system should provide a suitable amount of water to maintain healthy crop growth.
 
-## Evaluation
+### Evaluation
 
-- Simple and direct.
-- Requires no examples.
-- Fast to generate.
-- Suitable for general explanations.
-- May provide less specialized information.
+- **Reasoning:** Good
+- **Correctness:** High
+- **Token Usage:** Low
+
+### Observation
+
+Zero-shot prompting provides a quick response with minimal instructions, making it suitable for simple irrigation decisions.
 
 ---
 
@@ -81,40 +66,38 @@ The AI should explain how sensors collect machine data, how abnormal conditions 
 
 ## Definition
 
-Few-shot prompting provides the AI with a few examples before asking it to perform a similar task.
+Few-shot prompting provides examples to guide the AI before presenting the actual problem.
 
-## Prompt
+### Prompt
 
 > Example 1:  
-> **Sensor:** Temperature sensor  
-> **Abnormal Reading:** Temperature continuously increases  
-> **Possible Problem:** Machine overheating  
-> **Action:** Inspect cooling system.
+> Soil moisture = 20%, Rainfall = 0 mm → Irrigation Required.
 >
 > Example 2:  
-> **Sensor:** Vibration sensor  
-> **Abnormal Reading:** High vibration level  
-> **Possible Problem:** Bearing damage  
-> **Action:** Schedule machine inspection.
+> Soil moisture = 70%, Rainfall = 5 mm → Irrigation Not Required.
 >
-> Now analyze the following manufacturing condition:
+> Example 3:  
+> Soil moisture = 40%, Rainfall = 0 mm → Moderate Irrigation.
 >
-> **Sensor:** Energy sensor  
-> **Abnormal Reading:** Energy consumption suddenly increases  
+> Now analyze:
 >
-> Identify the possible problem and recommended action.
+> Soil moisture = 25%, Rainfall = 0 mm.
+>
+> Determine the irrigation requirement and recommended action.
 
-## Expected Output
+### Expected Output
 
-> **Possible Problem:** Motor or equipment may be operating inefficiently or experiencing a mechanical fault.  
-> **Recommended Action:** Inspect the motor, bearings, and power system and compare the current energy consumption with historical values.
+> Irrigation is required because the soil moisture is 25% and there has been no rainfall. Based on the examples, the system should initiate irrigation.
 
-## Evaluation
+### Evaluation
 
-- Provides consistent responses.
-- Examples guide the AI.
-- Useful for repeated industrial tasks.
-- More reliable for structured outputs than a basic prompt.
+- **Reasoning:** Very Good
+- **Correctness:** Very High
+- **Token Usage:** Medium
+
+### Observation
+
+Few-shot prompting improves consistency because the AI learns the expected decision pattern from the examples.
 
 ---
 
@@ -122,27 +105,31 @@ Few-shot prompting provides the AI with a few examples before asking it to perfo
 
 ## Definition
 
-Chain-of-Thought prompting encourages the AI to approach a complex problem through a sequence of reasoning steps.
+Chain-of-Thought prompting encourages the AI to analyze a problem through multiple reasoning steps before reaching a conclusion.
 
-## Prompt
+### Prompt
 
-> A manufacturing machine has shown increasing vibration, increasing temperature, and higher energy consumption during the last three operating cycles. Analyze the situation systematically. Identify the possible cause, supporting indicators, risk level, recommended maintenance action, and expected benefit of taking action before failure.
+> Analyze this smart irrigation situation systematically. Consider soil moisture, temperature, humidity, and rainfall. Determine the crop's irrigation requirement, identify the main factors affecting the decision, and recommend an appropriate action.
+>
+> Sensor Data:
+> - Soil moisture: 25%
+> - Temperature: 34°C
+> - Humidity: 45%
+> - Rainfall: 0 mm
 
-## Expected Output Structure
+### Expected Output
 
-1. Identify abnormal sensor readings.
-2. Determine possible relationships between the readings.
-3. Identify the most likely equipment problem.
-4. Estimate the potential risk.
-5. Recommend a maintenance action.
-6. Explain how early maintenance can reduce downtime.
+> The soil moisture level is low, the temperature is relatively high, and there has been no rainfall. These conditions indicate that the crop may require additional water. The irrigation controller should activate irrigation while considering crop type and soil characteristics.
 
-## Evaluation
+### Evaluation
 
-- Suitable for complex problems.
-- Produces systematic analysis.
-- Helps identify relationships between multiple sensor readings.
-- Useful for predictive maintenance decisions.
+- **Reasoning:** Excellent
+- **Correctness:** Very High
+- **Token Usage:** High
+
+### Observation
+
+Chain-of-Thought prompting is useful for engineering problems involving multiple variables, although it generally requires more output tokens.
 
 ---
 
@@ -150,29 +137,29 @@ Chain-of-Thought prompting encourages the AI to approach a complex problem throu
 
 ## Definition
 
-Persona prompting assigns a specific professional role to the AI so that it responds from that perspective.
+Persona prompting assigns a professional role to the AI so that it responds from a specific expert perspective.
 
-## Prompt
+### Prompt
 
-> Act as an experienced industrial IoT and predictive maintenance engineer. Analyze a manufacturing machine that shows abnormal vibration, increasing temperature, and rising energy consumption. Explain the possible causes, recommended maintenance actions, and methods to prevent future failures. Present the explanation so that a factory maintenance manager can understand it easily.
+> Act as an agricultural IoT engineer specializing in smart irrigation systems. Analyze the following sensor readings and recommend an irrigation decision:
+>
+> Soil moisture = 25%, Temperature = 34°C, Humidity = 45%, Rainfall = 0 mm.
+>
+> Consider water conservation and crop health while providing your recommendation.
 
-## Expected Output
+### Expected Output
 
-The AI should respond like an industrial maintenance expert and focus on:
+> As an agricultural IoT engineer, I would recommend initiating irrigation because the soil moisture is relatively low and no rainfall has occurred. However, the irrigation duration should also consider crop type, soil type, weather forecasts, and water availability to prevent over-irrigation.
 
-- Machine health
-- Sensor readings
-- Failure prediction
-- Maintenance planning
-- Production downtime
-- Energy efficiency
+### Evaluation
 
-## Evaluation
+- **Reasoning:** Excellent
+- **Correctness:** Excellent
+- **Token Usage:** Medium
 
-- Provides domain-focused responses.
-- Uses appropriate technical terminology.
-- Improves relevance.
-- Useful for professional decision-making.
+### Observation
+
+The Persona Pattern provides domain-specific recommendations and considers practical engineering factors.
 
 ---
 
@@ -180,34 +167,34 @@ The AI should respond like an industrial maintenance expert and focus on:
 
 ## Definition
 
-Reverse prompting starts with the desired output and asks the AI to create or improve the prompt required to generate that output.
+Reverse prompting starts with the desired output and asks the AI to create an effective prompt for generating that output.
 
-## Prompt
+### Prompt
 
-> I need an AI-generated predictive maintenance report containing:
+> I want an AI system to produce a smart irrigation decision containing:
 >
-> - Machine status
-> - Sensor abnormalities
-> - Possible failure
-> - Risk level
-> - Recommended maintenance
-> - Estimated downtime
-> - Preventive action
+> - Sensor condition
+> - Irrigation requirement
+> - Reason
+> - Water conservation recommendation
+> - Final action
 >
-> Create an effective prompt that I can give to an AI system to generate this report from IoT sensor data.
+> Create an effective prompt that can be used with smart irrigation sensor data to generate this output.
 
-## Expected Output
+### Expected Output
 
-The AI may generate a prompt such as:
+> Analyze the provided smart irrigation sensor readings and determine whether irrigation is required. Consider soil moisture, temperature, humidity, rainfall, and water availability. Provide the sensor condition, reasoning, irrigation recommendation, water conservation suggestion, and final action in a structured format.
 
-> "Analyze the provided IoT sensor data from a manufacturing machine. Identify abnormal readings, determine the likely equipment fault, classify the risk level, recommend maintenance actions, estimate possible downtime, and suggest preventive measures. Present the results in a structured predictive maintenance report."
+### Evaluation
 
-## Evaluation
+- **Reasoning:** Good
+- **Correctness:** Very Good
+- **Token Usage:** Medium
+- **Reusability:** Excellent
 
-- Useful for creating reusable prompts.
-- Helps users who do not know how to formulate complex prompts.
-- Produces task-specific prompts.
-- Useful for developing AI-based industrial applications.
+### Observation
+
+Reverse prompting is useful for creating reusable prompts for an AI-powered irrigation application.
 
 ---
 
@@ -215,44 +202,43 @@ The AI may generate a prompt such as:
 
 ## Definition
 
-Graph prompting represents information as connected entities and relationships. It is useful when multiple components have dependencies or relationships.
+Graph prompting represents a system using entities and relationships. It is useful for understanding how different components interact.
 
-## Prompt
+### Prompt
 
-> Represent the smart manufacturing predictive maintenance system as a relationship graph using the following components:
->
-> Sensors → IoT Gateway → Data Processing → AI Model → Fault Detection → Maintenance Alert → Maintenance Team.
->
-> Show the relationship between each component and explain how information flows through the system.
+> Represent a smart irrigation system as a graph showing the relationship between sensors, IoT gateway, AI analysis, irrigation controller, water pump, and crops. Explain the direction of information flow.
 
-## Expected Output
+### Expected Output
 
 ```text
-Temperature Sensor ──┐
-Vibration Sensor ────┤
-Energy Sensor ───────┤
-                     ↓
-                IoT Gateway
-                     ↓
-              Data Processing
-                     ↓
-                AI Model
-                     ↓
-              Fault Detection
-                     ↓
-             Maintenance Alert
-                     ↓
-             Maintenance Team
-                     ↓
-              Machine Service
+Soil Moisture Sensor ──┐
+Temperature Sensor ───┤
+Humidity Sensor ──────┤
+Rain Sensor ──────────┤
+                      ↓
+                 IoT Gateway
+                      ↓
+                AI Analysis
+                      ↓
+             Irrigation Decision
+                      ↓
+             Irrigation Controller
+                      ↓
+                  Water Pump
+                      ↓
+                    Crops
 ```
 
-## Evaluation
+### Evaluation
 
-- Clearly represents relationships.
-- Makes complex systems easier to understand.
-- Useful for architecture and workflow analysis.
-- Helps visualize dependencies between components.
+- **Reasoning:** Excellent
+- **Correctness:** Excellent
+- **Token Usage:** Medium
+- **Clarity:** Excellent
+
+### Observation
+
+Graph prompting clearly represents the relationships between components and is useful for understanding system architecture.
 
 ---
 
@@ -260,51 +246,57 @@ Energy Sensor ───────┤
 
 ## Definition
 
-Active prompting allows the AI to identify missing information and ask the user relevant questions before producing the final response.
+Active prompting allows the AI to ask for additional information before making a final decision.
 
-## Prompt
+### Prompt
 
-> You are designing a predictive maintenance system for a manufacturing plant. Before recommending the AI solution, ask me the most important questions about the machines, available sensors, production environment, historical data, failure records, and required response time. After receiving my answers, design the predictive maintenance solution.
+> You are designing a smart irrigation system. Before deciding whether irrigation should be activated, ask the most important questions about the crop, soil, weather conditions, sensor readings, and water availability. After receiving the information, provide the irrigation recommendation.
 
-## Example AI Questions
+### Expected Output
 
-1. What type of machines are being monitored?
-2. Which sensors are currently available?
-3. How frequently is sensor data collected?
-4. Is historical machine failure data available?
-5. How quickly should maintenance alerts be generated?
+The AI may ask:
 
-## Evaluation
+1. What type of crop is being grown?
+2. What is the soil type?
+3. What is the current soil moisture?
+4. Is rainfall expected?
+5. How much water is available?
+6. When was the last irrigation cycle?
 
-- Improves personalization.
-- Reduces assumptions.
-- Collects missing information.
-- Produces more relevant solutions.
-- Useful for real-world project requirements.
+After receiving the answers, the AI can provide a more reliable irrigation recommendation.
+
+### Evaluation
+
+- **Reasoning:** Excellent
+- **Correctness:** Excellent
+- **Token Usage:** High
+- **Personalization:** Excellent
+
+### Observation
+
+Active prompting reduces assumptions by collecting missing information before making an engineering decision.
 
 ---
 
-# COMPARISON OF PROMPT PATTERNS
+# COMPARISON OF PROMPTING PATTERNS
 
-| Prompt Pattern | Main Purpose | Strength | Limitation |
+| Prompt Pattern | Reasoning | Correctness | Token Usage |
 |---|---|---|---|
-| Zero-shot | Direct task | Simple and fast | Less context |
-| Few-shot | Learn from examples | Consistent output | Requires examples |
-| Chain-of-Thought | Complex reasoning | Detailed analysis | Can be lengthy |
-| Persona | Expert perspective | Domain-focused output | Depends on role definition |
-| Reverse | Create better prompts | Reusable prompts | Requires clear desired output |
-| Graph | Show relationships | Excellent visualization | More suitable for structured systems |
-| Active | Gather missing information | Highly personalized | Requires interaction |
+| Zero-shot | Good | High | Low |
+| Few-shot | Very Good | Very High | Medium |
+| Chain-of-Thought | Excellent | Very High | High |
+| Persona Pattern | Excellent | Excellent | Medium |
+| Reverse Prompting | Good | Very Good | Medium |
+| Graph Prompting | Excellent | Excellent | Medium |
+| Active Prompting | Excellent | Excellent | High |
 
 ---
 
-# RUBRIC-BASED EVALUATION
+# RUBRIC
 
-Each prompting technique is evaluated on a scale of **1 to 5**.
+The AI outputs are evaluated using a 5-point scale.
 
-### Evaluation Criteria
-
-| Score | Meaning |
+| Score | Evaluation |
 |---|---|
 | 5 | Excellent |
 | 4 | Very Good |
@@ -312,40 +304,48 @@ Each prompting technique is evaluated on a scale of **1 to 5**.
 | 2 | Average |
 | 1 | Poor |
 
+### Evaluation Criteria
+
+**Reasoning:** How effectively the prompt helps the AI analyze the engineering problem.
+
+**Correctness:** How accurately the AI produces the expected technical result.
+
+**Token Usage:** The approximate amount of text/tokens required to produce the response. Lower usage is preferred when the quality remains high.
+
 ---
 
-# EVALUATION TABLE
+# FINAL EVALUATION
 
-| Prompt Pattern | Accuracy | Relevance | Clarity | Structure | Usefulness | Total / 25 |
-|---|---:|---:|---:|---:|---:|---:|
-| Zero-shot | 4 | 4 | 5 | 4 | 4 | **21** |
-| Few-shot | 5 | 5 | 4 | 5 | 5 | **24** |
-| Chain-of-Thought | 5 | 5 | 4 | 5 | 5 | **24** |
-| Persona | 5 | 5 | 5 | 4 | 5 | **24** |
-| Reverse | 4 | 5 | 4 | 5 | 5 | **23** |
-| Graph | 5 | 5 | 5 | 5 | 5 | **25** |
-| Active | 5 | 5 | 5 | 4 | 5 | **24** |
+| Prompt Pattern | Reasoning /5 | Correctness /5 | Token Efficiency /5 | Total /15 |
+|---|---:|---:|---:|---:|
+| Zero-shot | 4 | 4 | 5 | **13** |
+| Few-shot | 4 | 5 | 4 | **13** |
+| Chain-of-Thought | 5 | 5 | 3 | **13** |
+| Persona Pattern | 5 | 5 | 4 | **14** |
+| Reverse Prompting | 4 | 4 | 4 | **12** |
+| Graph Prompting | 5 | 5 | 4 | **14** |
+| Active Prompting | 5 | 5 | 3 | **13** |
 
 ---
 
 # OBSERVATION
 
-- **Zero-shot prompting** was the simplest and fastest technique for general explanations.
-- **Few-shot prompting** improved consistency by providing examples to the AI.
-- **Chain-of-Thought prompting** was useful for analyzing complex machine-failure scenarios.
-- **Persona prompting** generated domain-specific responses suitable for industrial professionals.
-- **Reverse prompting** was useful for designing reusable prompts.
-- **Graph prompting** provided the clearest representation of relationships between IoT components.
-- **Active prompting** produced personalized solutions by collecting missing information first.
+- **Zero-shot prompting** used the fewest tokens and was effective for simple decisions.
+- **Few-shot prompting** improved correctness by providing examples.
+- **Chain-of-Thought** produced strong reasoning but required more tokens.
+- **Persona Pattern** improved domain-specific reasoning and practical recommendations.
+- **Reverse Prompting** was useful for creating reusable prompts.
+- **Graph Prompting** was highly effective for representing relationships between system components.
+- **Active Prompting** produced highly contextual decisions but required additional interaction and tokens.
 
 ---
 
 # RESULT
 
-The different prompt engineering patterns were successfully designed and evaluated for the smart manufacturing predictive maintenance use case. Each technique produced different benefits depending on the task, with **Graph Prompting** achieving the highest rubric score for representing the relationships and workflow of the IoT-based manufacturing system.
+The seven prompt engineering patterns were successfully implemented for the **Smart Irrigation** engineering case study. The experiment showed that different prompting techniques provide different advantages in reasoning, correctness, and token efficiency.
 
 ---
 
 # CONCLUSION
 
-Advanced prompt engineering techniques significantly improve the quality and usefulness of AI-generated responses. Simple techniques such as Zero-shot prompting are suitable for direct questions, while Few-shot and Chain-of-Thought prompting are useful for complex tasks. Persona, Reverse, Graph, and Active prompting provide additional control, specialization, visualization, and personalization. Therefore, selecting the appropriate prompt pattern according to the task is essential for developing effective AI-powered manufacturing applications.
+Advanced prompt engineering techniques can significantly improve AI performance in engineering applications. **Persona and Graph Prompting** provided a strong balance of reasoning and correctness, while **Zero-shot Prompting** was the most token-efficient. **Chain-of-Thought and Active Prompting** were effective for complex problems but required more tokens. Therefore, the best prompting technique depends on the complexity and requirements of the engineering task.
